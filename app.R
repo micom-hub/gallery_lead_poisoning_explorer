@@ -246,6 +246,13 @@ ui <- page_sidebar(
           font-size: 0.85rem;
         }
 
+        /* Emphasize the counts without changing the descriptive labels. */
+        #summary_table tbody td:nth-child(2) {
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: #00274c;
+        }
+
         @media (max-width: 600px) {
           .um-app-title {
             gap: 0.65rem;
@@ -369,7 +376,7 @@ ui <- page_sidebar(
 
         numericInput(
           inputId = "population_size",
-          label = "Population size (children)",
+          label = "Population size",
           value = default_population_size,
           min = 1,
           max = maximum_population_size,
@@ -526,7 +533,7 @@ server <- function(input, output, session) {
       paste(
         "Generated",
         format(n_children, big.mark = ","),
-        "synthetic children."
+        "synthetic records."
       ),
       type = "message",
       duration = 4
@@ -831,7 +838,11 @@ observeEvent(
           trajectory_labels[as.character(trajectory)]
         ),
 
-        `Synthetic child` = Name,
+        # Extract the numeric identifier from "Synthetic Child 00001".
+        `Synthetic ID` = as.integer(
+          gsub("[^0-9]", "", Name)
+        ),
+
         County,
         Sex,
 
@@ -845,7 +856,7 @@ observeEvent(
 
         `Number of retained tests` = test_count
       ) %>%
-      arrange(`Summary category`, `Synthetic child`)
+      arrange(`Summary category`, `Synthetic ID`)
   })
 
   output$detailed_summary_download_ui <- renderUI({
@@ -868,7 +879,7 @@ observeEvent(
     tagList(
       hr(),
 
-      h5("Synthetic children included in the summary"),
+      h5("Synthetic data used to generate this summary"),
 
       helpText(
         "This table reflects the current gap, county, sex, and age filters."
@@ -1043,8 +1054,8 @@ output$download_detailed_summary <- downloadHandler(
         },
 
         hover_text = paste0(
-          "<b>Synthetic child:</b> ",
-          htmlEscape(as.character(Name)),
+          "<b>Synthetic ID:</b> ",
+          as.integer(gsub("[^0-9]", "", Name)),
 
           "<br><b>Trajectory:</b> ",
           htmlEscape(trajectory_display),
