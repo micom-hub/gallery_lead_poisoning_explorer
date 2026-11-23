@@ -17,8 +17,6 @@ library(lubridate)
 
 shiny::devmode(FALSE)
 
-source("scripts/buildsyntheticdata.R", local = TRUE)
-
 # App parameters - These can be modified to change the default app settings ----
 
 default_population_size <- 25
