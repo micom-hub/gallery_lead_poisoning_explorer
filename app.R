@@ -4,7 +4,7 @@
 # 
 # Required:
 #   R/helpers.R
-#   scripts/buildsyntheticdata.R
+#   R/buildsyntheticdata.R
 #   www/logo.png
 
 library(shiny)

@@ -2128,13 +2128,16 @@
   },
   "files": {
     ".Rprofile": {
-      "checksum": "ffa4e3dc26f19c6ca5d1a4f749f2f442"
+      "checksum": "579404e3457cd47b288007f1fd3d0384"
     },
     "app.R": {
-      "checksum": "a8ffb7d5aebd27220470bb7bf31b28e3"
+      "checksum": "f2210ec8a7ac7450f79f54ea848faff0"
     },
     "LICENSE": {
       "checksum": "cd3fbcd3819ad39a2f5040adc693108c"
+    },
+    "R/buildsyntheticdata.R": {
+      "checksum": "43d56822d5adc5b2f83579bf623cccbb"
     },
     "R/helpers.R": {
       "checksum": "bb97f3c79d51a5df4fdbe469da5e6f66"
@@ -2144,9 +2147,6 @@
     },
     "renv.lock": {
       "checksum": "66d0353b09f55a304d44eeb157812200"
-    },
-    "scripts/buildsyntheticdata.R": {
-      "checksum": "726bc89e32042e0d49add30c20127bc8"
     },
     "www/logo.png": {
       "checksum": "89bc864c773fc27bb4e90a4a3829e64b"

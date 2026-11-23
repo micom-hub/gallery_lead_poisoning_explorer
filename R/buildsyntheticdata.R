@@ -1,4 +1,4 @@
-# scripts/buildsyntheticdata.R
+# R/buildsyntheticdata.R
 #
 # Generate random demonstration records without using real patient data.
 
